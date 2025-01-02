@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Challenge Application</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    .wrapper {
+      margin: 20px auto;
+      max-width: 600px;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+    h2 {
+      font-size: 1.5em;
+      margin-bottom: 20px;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      font-size: 1.2em;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 5px;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <h1 id="year">Asabeneh Yetayeh challenges in <span id="dynamicYear">2020</span></h1>
+    <h2 id="dateTime"></h2>
+    <ul>
+      <li class="completed">Python Challenge Done</li>
+      <li class="ongoing">JavaScript Challenge Ongoing</li>
+      <li class="coming">React Challenge Coming</li>
+      <li class="coming">FullStack Challenge Coming</li>
+      <li class="coming">DataAnalysis Challenge Coming</li>
+      <li class="coming">ReactNative Challenge Coming</li>
+      <li class="coming">MachineLearning Challenge Coming</li>
+    </ul>
+  </div>
+
+  <script>
+    // Change year color every 1 second
+    const yearElement = document.getElementById('dynamicYear');
+    setInterval(() => {
+      yearElement.style.color = getRandomColor();
+    }, 1000);
+
+    // Change background color of date and time every 1 second
+    const dateTimeElement = document.getElementById('dateTime');
+    setInterval(() => {
+      const now = new Date();
+      dateTimeElement.textContent = now.toLocaleString();
+      dateTimeElement.style.backgroundColor = getRandomColor();
+      dateTimeElement.style.padding = '10px';
+      dateTimeElement.style.borderRadius = '5px';
+      dateTimeElement.style.display = 'inline-block';
+    }, 1000);
+
+    // Apply background colors to challenge statuses
+    document.querySelectorAll('.completed').forEach(item => {
+      item.style.backgroundColor = 'green';
+    });
+
+    document.querySelectorAll('.ongoing').forEach(item => {
+      item.style.backgroundColor = 'yellow';
+      item.style.color = 'black';
+    });
+
+    document.querySelectorAll('.coming').forEach(item => {
+      item.style.backgroundColor = 'red';
+    });
+
+    // Function to generate random color
+    function getRandomColor() {
+      const letters = '0123456789ABCDEF';
+      let color = '#';
+      for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    }
+  </script>
+</body>
+</html>

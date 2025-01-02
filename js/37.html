@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clone and Remove Row</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      text-align: center;
+      padding: 8px;
+    }
+    .action-button {
+      cursor: pointer;
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+    }
+    .add-button {
+      margin-top: 10px;
+      padding: 10px 15px;
+      background-color: blue;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <table id="productTable">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td><input type="text" placeholder="Select Product"></td>
+        <td><input type="number" placeholder="Price"></td>
+        <td><button class="action-button" onclick="removeRow(this)">🗑️</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="add-button" onclick="addRow()">Add New Row</button>
+
+  <script>
+    function addRow() {
+      const table = document.getElementById('productTable').getElementsByTagName('tbody')[0];
+      const rowCount = table.rows.length + 1;
+
+      const newRow = table.insertRow();
+      newRow.innerHTML = `
+        <td>${rowCount}</td>
+        <td><input type="text" placeholder="Select Product"></td>
+        <td><input type="number" placeholder="Price"></td>
+        <td><button class="action-button" onclick="removeRow(this)">🗑️</button></td>
+      `;
+    }
+
+    function removeRow(button) {
+      const row = button.parentNode.parentNode;
+      row.parentNode.removeChild(row);
+
+      // Re-index remaining rows
+      const rows = document.querySelectorAll("#productTable tbody tr");
+      rows.forEach((row, index) => {
+        row.cells[0].innerText = index + 1;
+      });
+    }
+  </script>
+</body>
+</html>

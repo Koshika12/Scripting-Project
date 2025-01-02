@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Counter Program</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .counter {
+      font-size: 48px;
+      margin: 20px 0;
+    }
+    .buttons {
+      display: flex;
+      gap: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+    }
+    .add {
+      background-color: green;
+      color: white;
+    }
+    .subtract {
+      background-color: red;
+      color: white;
+    }
+    .reset {
+      background-color: orange;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+    <h2>Counter Program</h2>
+  <div class="counter" id="counter">0</div>
+  <div class="buttons">
+    <button class="add" id="addButton">Add</button>
+    <button class="subtract" id="subtractButton">Subtract</button>
+    <button class="reset" id="resetButton">Reset</button>
+  </div>
+
+  <script>
+    // Counter value
+    let counter = 0;
+
+    // Get elements
+    const counterDisplay = document.getElementById('counter');
+    const addButton = document.getElementById('addButton');
+    const subtractButton = document.getElementById('subtractButton');
+    const resetButton = document.getElementById('resetButton');
+
+    // Update counter display
+    function updateCounter() {
+      counterDisplay.textContent = counter;
+    }
+
+    // Add event listeners to buttons
+    addButton.addEventListener('click', () => {
+      counter++;
+      updateCounter();
+    });
+
+    subtractButton.addEventListener('click', () => {
+      counter--;
+      updateCounter();
+    });
+
+    resetButton.addEventListener('click', () => {
+      counter = 0;
+      updateCounter();
+    });
+  </script>
+</body>
+</html>

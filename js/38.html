@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paragraph Events</title>
+  <style>
+    .container {
+      text-align: center;
+      margin-top: 50px;
+    }
+    .buttons {
+      margin: 20px 0;
+    }
+    button {
+      margin: 5px;
+      padding: 10px 15px;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    #paragraph {
+      margin: 20px auto;
+      width: 50%;
+      padding: 20px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="paragraph">
+      This is a sample paragraph. Use the buttons below to modify its appearance and behavior.
+    </div>
+    <div class="buttons">
+      <button onclick="changeBackgroundColor()">Change Background</button>
+      <button onclick="changeParagraphBackground()">Change Paragraph Background</button>
+      <button onclick="hideParagraph()">Hide Paragraph</button>
+      <button onclick="showParagraph()">Show Paragraph</button>
+      <button onclick="increaseFontSize()">Increase Font Size</button>
+      <button onclick="decreaseFontSize()">Decrease Font Size</button>
+      <button onclick="resetFont()">Reset Font</button>
+      <button onclick="changeTextColor()">Change Text Color</button>
+    </div>
+  </div>
+
+  <script>
+    const paragraph = document.getElementById('paragraph');
+
+    function changeBackgroundColor() {
+      document.body.style.backgroundColor = 'lightblue';
+    }
+
+    function changeParagraphBackground() {
+      paragraph.style.backgroundColor = 'yellow';
+    }
+
+    function hideParagraph() {
+      paragraph.style.display = 'none';
+    }
+
+    function showParagraph() {
+      paragraph.style.display = 'block';
+    }
+
+    function increaseFontSize() {
+      const currentSize = parseFloat(window.getComputedStyle(paragraph).fontSize);
+      paragraph.style.fontSize = `${currentSize + 2}px`;
+    }
+
+    function decreaseFontSize() {
+      const currentSize = parseFloat(window.getComputedStyle(paragraph).fontSize);
+      paragraph.style.fontSize = `${currentSize - 2}px`;
+    }
+
+    function resetFont() {
+      paragraph.style.fontSize = '16px';
+      paragraph.style.fontFamily = '';
+    }
+
+    function changeTextColor() {
+      paragraph.style.color = 'red';
+    }
+  </script>
+</body>
+</html>

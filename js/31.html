@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number Classification</title>
+  <style>
+    .number-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin: 20px;
+    }
+    .number {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      border: 1px solid black;
+      border-radius: 5px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    .even {
+      background-color: green;
+      color: white;
+    }
+    .odd {
+      background-color: yellow;
+      color: black;
+    }
+    .prime {
+      background-color: red;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div id="numberContainer" class="number-container"></div>
+
+  <script>
+    // Helper function to check if a number is prime
+    function isPrime(num) {
+      if (num < 2) return false;
+      for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) return false;
+      }
+      return true;
+    }
+
+    // Generate numbers from 1 to user input
+    const userNumber = parseInt(prompt('Enter a number:'), 10);
+
+    if (!isNaN(userNumber) && userNumber > 0) {
+      const numberContainer = document.getElementById('numberContainer');
+
+      for (let i = 1; i <= userNumber; i++) {
+        const numberDiv = document.createElement('div');
+        numberDiv.className = 'number';
+        numberDiv.textContent = i;
+
+        if (isPrime(i)) {
+          numberDiv.classList.add('prime');
+        } else if (i % 2 === 0) {
+          numberDiv.classList.add('even');
+        } else {
+          numberDiv.classList.add('odd');
+        }
+
+        numberContainer.appendChild(numberDiv);
+      }
+    } else {
+      alert('Please enter a valid positive number.');
+    }
+  </script>
+</body>
+</html>

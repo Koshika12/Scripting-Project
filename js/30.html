@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Numbers and Countries</title>
+  <style>
+    .number-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin: 20px;
+    }
+    .number {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      border: 1px solid black;
+      border-radius: 5px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    table, th, td {
+      border: 1px solid black;
+    }
+    th, td {
+      padding: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="numberContainer" class="number-container"></div>
+
+  <table id="countriesTable"></table>
+  <script >
+    // 30. Display 50 countries in tabular format
+    const countries = [
+        'Afghanistan', 'Albania', 'Algeria', 'Andorra', 'Angola',
+        'Argentina', 'Armenia', 'Australia', 'Austria', 'Azerbaijan',
+        'Bahamas', 'Bahrain', 'Bangladesh', 'Barbados', 'Belarus',
+        'Belgium', 'Belize', 'Benin', 'Bhutan', 'Bolivia',
+        'Bosnia and Herzegovina', 'Botswana', 'Brazil', 'Brunei', 'Bulgaria',
+        'Burkina Faso', 'Burundi', 'Cabo Verde', 'Cambodia', 'Cameroon',
+        'Canada', 'Central African Republic', 'Chad', 'Chile', 'China',
+        'Colombia', 'Comoros', 'Congo', 'Costa Rica', 'Croatia',
+        'Cuba', 'Cyprus', 'Czech Republic', 'Denmark', 'Djibouti',
+        'Dominica', 'Dominican Republic', 'Ecuador', 'Egypt', 'El Salvador'
+      ];
+  
+      const countriesTable = document.getElementById('countriesTable');
+  
+      let tableContent = '<tr>';
+      countries.forEach((country, index) => {
+        tableContent += `<td>${country}</td>`;
+        if ((index + 1) % 6 === 0) {
+          tableContent += '</tr><tr>';
+        }
+      });
+      tableContent += '</tr>';
+      countriesTable.innerHTML = tableContent;
+  </script>
+  </body>
+  </html>
